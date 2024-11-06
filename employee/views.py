@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render
 
 from rest_framework import status
@@ -23,7 +24,11 @@ class EmployeeList(APIView):
     
 class EmployeeDetails(APIView):
     def get_employee(self, pk):
-        return Employee.objects.get(pk=pk)
+        try:
+            employee = Employee.objects.get(pk=pk)
+            return employee
+        except Employee.DoesNotExist:
+            raise Http404
     
     def get(self, request, pk):
         employee = self.get_employee(pk=pk)

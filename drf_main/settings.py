@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'library',
     'teachers',
     'movies',
+    'blogs',
 ]
 
 MIDDLEWARE = [

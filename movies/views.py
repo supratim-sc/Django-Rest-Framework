@@ -1,11 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.viewsets import ViewSet
+from rest_framework.viewsets import ViewSet, ModelViewSet
 from .models import Movie
 from api.serializers import MovieSerializer
 
 # Create your views here.
+# ViewSet
+'''
 class MoviesViewSet(ViewSet):
     def get(self, request):
         queryset = Movie.objects.all()
@@ -36,4 +38,9 @@ class MoviesViewSet(ViewSet):
         movie = get_object_or_404(Movie, pk=pk)
         movie.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-        
+'''
+
+# ModelViewSet
+class MoviesViewSet(ModelViewSet):
+    queryset = Movie.objects.all()
+    serializer_class = MovieSerializer

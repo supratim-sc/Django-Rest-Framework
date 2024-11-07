@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.filters import SearchFilter
+from rest_framework.filters import SearchFilter, OrderingFilter
 from .models import Blog, Comment
 from .pagination import CustomPageNumberPagination, CustomLimitOffsetPagination
 from api.serializers import BlogSerializer, CommentSerializer
@@ -26,5 +26,6 @@ class CommentViewSet(ModelViewSet):
     def get_queryset(self):
         return Comment.objects.filter(blog_id=self.kwargs['_pk'])
     serializer_class = CommentSerializer
-    filter_backends = [SearchFilter]
+    filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['comment']
+    ordering_fields = ['id']

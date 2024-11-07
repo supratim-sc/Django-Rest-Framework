@@ -3,13 +3,15 @@ from rest_framework.viewsets import ModelViewSet
 from .models import Blog, Comment
 from .pagination import CustomPageNumberPagination, CustomLimitOffsetPagination
 from api.serializers import BlogSerializer, CommentSerializer
+from .filters import CustomFilterByBlogTitle
 
 # Create your views here.
 class BlogViewSet(ModelViewSet):
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
     pagination_class = CustomLimitOffsetPagination
-    filterset_fields = ['title']
+    # filterset_fields = ['title']
+    filterset_class = CustomFilterByBlogTitle
 
 class CommentViewSet(ModelViewSet):
     # As we need to filter comments based on the blog_id,

@@ -9,6 +9,7 @@ class BlogViewSet(ModelViewSet):
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
     pagination_class = CustomLimitOffsetPagination
+    filterset_fields = ['title']
 
 class CommentViewSet(ModelViewSet):
     # As we need to filter comments based on the blog_id,

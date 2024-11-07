@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.filters import SearchFilter
 from .models import Blog, Comment
 from .pagination import CustomPageNumberPagination, CustomLimitOffsetPagination
 from api.serializers import BlogSerializer, CommentSerializer
 from .filters import CustomFilterByBlogTitle
+
 
 # Create your views here.
 class BlogViewSet(ModelViewSet):
@@ -24,3 +26,5 @@ class CommentViewSet(ModelViewSet):
     def get_queryset(self):
         return Comment.objects.filter(blog_id=self.kwargs['_pk'])
     serializer_class = CommentSerializer
+    filter_backends = [SearchFilter]
+    search_fields = ['comment']

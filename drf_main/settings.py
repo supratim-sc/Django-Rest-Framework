@@ -130,7 +130,14 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# GLOBAL PAGINATION with PageNumberPagination
+# REST_FRAMEWORK = {
+#     'DEFAULT_PAGINATION_CLASS' : 'rest_framework.pagination.PageNumberPagination',
+#     'PAGE_SIZE' : 2,
+# }
+
+# GLOBAL PAGINATION with LimitOffsetPagination
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS' : 'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_PAGINATION_CLASS' : 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE' : 2,
 }

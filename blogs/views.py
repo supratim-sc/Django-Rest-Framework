@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 from .models import Blog, Comment
+from .pagination import CustomPageNumberPagination
 from api.serializers import BlogSerializer, CommentSerializer
 
 # Create your views here.
 class BlogViewSet(ModelViewSet):
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
+    pagination_class = CustomPageNumberPagination
 
 class CommentViewSet(ModelViewSet):
     # As we need to filter comments based on the blog_id,

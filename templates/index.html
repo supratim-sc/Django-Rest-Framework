@@ -1,0 +1,15 @@
+{% include 'include.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-5 center">List of API endpoints</h1>
+    <div class="list-group">
+        <a href="{{ 'students' }}" class="list-group-item list-group-item-action">Students endpoint</a>
+        <a href="{{ 'employees' }}" class="list-group-item list-group-item-action">Employees endpoint</a>
+        <a href="{{ 'library' }}" class="list-group-item list-group-item-action">Library endpoint</a>
+        <a href="{{ 'teachers' }}" class="list-group-item list-group-item-action">Teachers endpoint</a>
+        <a href="{{ 'movies' }}" class="list-group-item list-group-item-action">Movies endpoint</a>
+        <a href="{{ 'blogs' }}" class="list-group-item list-group-item-action">Blogs endpoint</a>
+      </div>
+</div>
+{% endblock %}
